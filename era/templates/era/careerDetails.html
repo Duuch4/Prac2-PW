@@ -1,0 +1,10 @@
+{% extends "era/base.html" %}
+{% block title %}Era - {{ carrera.name }}{% endblock %}
+{% block content %}
+<h1>Career {{ carrera.name }} info</h1>
+<ul>
+    <li><a>Name: {{ carrera.name }}</a></li>
+    <li><a>Description: {{ carrera.description }}</a></li>
+    <li><a>Facultad: {{ facultad.name }}</a></li>
+</ul>
+{% endblock %}

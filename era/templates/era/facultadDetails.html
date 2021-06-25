@@ -1,0 +1,15 @@
+{% extends "era/base.html" %}
+{% block title %}Era - {{ facultad.name }}{% endblock %}
+{% block content %}
+<h1>Facultad {{ facultad.name }} info</h1>
+<ul>
+    <li><a>Name: {{ facultad.name }}</a></li>
+    <li><a>Description: {{ facultad.description }}</a></li>
+</ul>
+<h1>Careers</h1>
+<ul>
+    {% for career in careerList %}
+        <li><a href="{% url 'era:career_details' facultad.id_Facultad career.id_carrera %}">Name: {{ career.name }}</a></li>
+    {% endfor %}
+</ul
+{% endblock %}
