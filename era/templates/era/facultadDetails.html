@@ -11,5 +11,8 @@
     {% for career in careerList %}
         <li><a href="{% url 'era:career_details' facultad.id_Facultad career.id_carrera %}">Name: {{ career.name }}</a></li>
     {% endfor %}
-</ul
+</ul>
+ {% if user.is_authenticated and user == facultad.user %}
+<a href="{% url 'era:create_career' facultad.id_Facultad %}">create</a>
+{% endif %}
 {% endblock %}

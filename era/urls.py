@@ -30,5 +30,5 @@ urlpatterns = [
 
     path('facultad/<int:pk>/career/create/',
          CareerCreate.as_view(),
-         name='create_carrer'),
+         name='create_career'),
 ]

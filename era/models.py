@@ -44,7 +44,7 @@ class Alumno(models.Model):
     fecha_nac= models.DateTimeField()
     Genero = models.CharField(max_length=20)
     Carrera_idCarrera = models.ForeignKey(Carrera, on_delete = models.CASCADE ,default="1")
-    Intercambio_idintercambio = models.ForeignKey(Intercambio, on_delete = models.CASCADE ,default="1")
+
 
 
 
