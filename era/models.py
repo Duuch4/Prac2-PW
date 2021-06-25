@@ -29,15 +29,6 @@ class Carrera(models.Model):
     def get_facultad(self):
         return Facultad.objects.get(pk=self.Facultad_idFacultad.pk)
 
-#-----------------------------------------------
-class Intercambio(models.Model):
-    id_intercambio = models.AutoField(primary_key=True, unique=True, editable=False)
-    universidad_destino = models.CharField(max_length=55)
-    periodo = models.CharField(max_length=45)
-    pais = models.CharField(max_length=45)
-    tipo= models.CharField(max_length=45)
-    descripcion= models.CharField(max_length=450)
-
 
 class Alumno(models.Model):
     id_alumno = models.AutoField(primary_key=True, unique=True, editable=False)
@@ -52,25 +43,5 @@ class Alumno(models.Model):
     Carrera_idCarrera = models.ForeignKey(Carrera, on_delete = models.CASCADE ,default="1")
     Intercambio_idintercambio = models.ForeignKey(Intercambio, on_delete = models.CASCADE ,default="1")
 
-class Comentario(models.Model):
-    id_comentario = models.AutoField(primary_key=True, unique=True, editable=False)
-    Comentario = models.CharField(max_length=750)
-    fecha= models.DateTimeField()
-    hora = models.TimeField()
-    Alumno_idalumno = models.ForeignKey(Alumno, on_delete = models.CASCADE,default="1")
-#--------------------------------------------
-class Publicacion(models.Model):
-    id_publicacion = models.AutoField(primary_key=True, unique=True, editable=False)
-    titulo = models.CharField(max_length=120)
-    descripcion = models.CharField(max_length=920)
-    fecha= models.DateTimeField()
-    hora = models.TimeField()
-    vistas = models.IntegerField()
-    Alumno_idAlumno = models.ForeignKey(Alumno,on_delete = models.CASCADE,default="1")
 
-class Multimedia(models.Model):
-    id_multimedia = models.AutoField(primary_key=True, unique=True, editable=False)
-    url = models.CharField(max_length=150)
-    tipo= models.CharField(max_length=45)
-    Publicacion_idPublicacion = models.ForeignKey(Publicacion,on_delete = models.CASCADE,default="1")
 
