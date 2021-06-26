@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
@@ -38,17 +38,6 @@ class FaculdadDetails(DetailView):
         context['careerList'] = context['facultad'].carrera_set.all()
         return context
 
-
-class CareerDetails(DetailView):
-    model = Carrera
-    template_name = 'era/careerDetails.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(CareerDetails, self).get_context_data(**kwargs)
-        context['facultad'] = context['carrera'].get_facultad()
-        return context
-
-
 class FacultadCreate(LoginRequiredMixin, CreateView):
     model = Facultad
     template_name = 'era/form.html'
@@ -68,3 +57,14 @@ class CareerCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         form.instance.Facultad_idFacultad = Facultad.objects.get(id_Facultad=self.kwargs['pk'])
         return super(CareerCreate, self).form_valid(form)
+
+
+class CareerDetails(DetailView):
+    model = Carrera
+    template_name = 'era/careerDetails.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CareerDetails, self).get_context_data(**kwargs)
+        context['facultad'] = context['carrera'].get_facultad()
+        return context
+

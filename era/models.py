@@ -23,7 +23,6 @@ class Carrera(models.Model):
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-
         return reverse('era:career_details', kwargs={
             'pk': self.Facultad_idFacultad.id_Facultad,
             'pkr': self.pk,

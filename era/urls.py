@@ -16,19 +16,33 @@ urlpatterns = [
             template_name='era/facultadList.html'),
         name='facultad_list'),
 
+    path('facultad/create',
+         FacultadCreate.as_view(),
+         name='create_facultad'),
+
     path('facultad/<int:pk>',
          FaculdadDetails.as_view(),
          name='facultad_details'),
+
+    path('facultad/<int:pk>/edit',
+        LoginRequiredCheckIsOwnerUpdateView.as_view(
+            model=Facultad,
+            form_class=FacultadForm
+         ),
+         name='facultad_edit'),
+
+    path('facultad/<int:pk>/career/create/',
+         CareerCreate.as_view(),
+         name='create_career'),
 
     path('facultad/<int:pk>/career/<int:pkr>',
          CareerDetails.as_view(),
          name='career_details'),
 
-    path('facultad/create',
-         FacultadCreate.as_view(),
-         name='create_facultad'),
-
-    path('facultad/<int:pk>/career/create/',
-         CareerCreate.as_view(),
-         name='create_career'),
+    path('facultad/<int:pk>/career/<int:pkr>/edit',
+         LoginRequiredCheckIsOwnerUpdateView.as_view(
+             model=Carrera,
+             form_class=CarrerForm
+         ),
+         name='career_edit'),
 ]
