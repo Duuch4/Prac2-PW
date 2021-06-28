@@ -1,11 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from era.forms import FacultadForm, CarrerForm
 from era.models import Facultad, Carrera
@@ -38,6 +36,7 @@ class FaculdadDetails(DetailView):
         context['careerList'] = context['facultad'].carrera_set.all()
         return context
 
+
 class FacultadCreate(LoginRequiredMixin, CreateView):
     model = Facultad
     template_name = 'era/form.html'
@@ -46,6 +45,12 @@ class FacultadCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(FacultadCreate, self).form_valid(form)
+
+
+class FacultadDelete(LoginRequiredMixin, CheckIsOwnerMixin, DeleteView):
+    model = Facultad
+    template_name = 'era/confirmationForm.html'
+    success_url = reverse_lazy('era:facultad_list')
 
 
 class CareerCreate(LoginRequiredMixin, CreateView):
@@ -68,3 +73,8 @@ class CareerDetails(DetailView):
         context['facultad'] = context['carrera'].get_facultad()
         return context
 
+
+class CareerDelete(LoginRequiredMixin, CheckIsOwnerMixin, DeleteView):
+    model = Carrera
+    template_name = 'era/confirmationForm.html'
+    success_url = reverse_lazy('era:facultad_list')

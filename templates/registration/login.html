@@ -11,7 +11,7 @@
                 <td>{{ form.password }}</td>
             </tr>
             <tr>
-                <td><input type="hidden" name="next" value="{% url 'login' %}"/></td>
+                <td><input type="hidden" name="next" value="{{ next }}"/></td>
             </tr>
         </table>
         <input type="submit" value="login" />

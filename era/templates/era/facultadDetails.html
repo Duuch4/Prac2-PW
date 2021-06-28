@@ -6,6 +6,10 @@
     <li><a>Name: {{ facultad.name }}</a></li>
     <li><a>Description: {{ facultad.description }}</a></li>
 </ul>
+{% if user.is_authenticated and user == facultad.user %}
+<a href="{% url 'era:facultad_edit' facultad.id_Facultad %}">Edit</a>
+<a href="{% url 'era:facultad_delete' facultad.id_Facultad %}">Delete</a>
+{% endif %}
 <h1>Careers</h1>
 <ul>
     {% for career in careerList %}
