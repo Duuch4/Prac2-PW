@@ -1,4 +1,0 @@
-Feature: Editar Facultades
-In order to change information of a faculty,
-As a user
-I want to edit the faculty.
