@@ -1,0 +1,4 @@
+Feature: Crear Facultades
+In order to save information of falcutys,
+As a user
+I want to create facultys.

@@ -1,0 +1,4 @@
+Feature: Lista Facultades
+In order to keep track of facultys,
+As a user
+I want to see a list of all the facultys.

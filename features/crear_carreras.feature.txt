@@ -1,0 +1,4 @@
+Feature: Crear Carreras
+In order to save information of a career,
+As a user
+I want to create a career.
