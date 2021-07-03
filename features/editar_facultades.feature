@@ -11,7 +11,7 @@ Background: There is a registered user
     When I edit a faculty
       | name        |
       | EPS  |
-    Then I'm viewing the details page for facultys wich changed by "user"
+    Then I'm viewing the details page for faculty by "user"
       | name        |
       | ETSEA |
     And There are 1 faculty edited

@@ -11,7 +11,4 @@ Background: There is a registered user
     When I see the list of the facultys
       | name        |
       | Facultys  |
-    Then I'm viewing the list of all the facultys by "user"
-      | name        |
-      | Facultys |
-    And There are X facultys in the list
+    Then I'm viewing the list of all the facultys

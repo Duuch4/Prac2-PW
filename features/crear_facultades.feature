@@ -12,6 +12,3 @@ Background: There is a registered user
       | name        |
       | EPS  |
     Then I'm viewing the details page for faculty by "user"
-      | name        |
-      | EPS  |
-    And There are 1 faculty

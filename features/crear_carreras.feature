@@ -12,6 +12,3 @@ Background: There is a registered user
       | name        |
       | GEI  |
     Then I'm viewing the details page for career by "user"
-      | name        |
-      | GEI  |
-    And There are 1 career
